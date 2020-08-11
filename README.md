@@ -1,5 +1,12 @@
+# Kanban Board
+Simple Kanban Board in Python. Please make sure to follow the instructions below to run the board on your browser and be marvelled at this beauty-->
+
+![](/kanban_login.png)
+![](/kanban_page.png)
+
+## How to get it up and running
 This was tested in a Windows environment. Please make sure that the commands are the same
-in other OS.
+in other OS. (Download the files first)
 
 Run in order:
 [type into your cmd] python -m venv .venv\ source 
