@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Kanban Board</title>
+    <style>
+
+        body {
+               background-image: url("/static/doge.jpg");
+               background-color: #cccccc;
+        }
+
+        #board {
+            display: table;
+            margin: auto;
+            width: 70%;
+            border: 3px solid yellow;
+            padding: 10px;
+
+        }
+        .section {
+            display: table-cell;
+            margin: 0;
+            border: 1px solid #666;
+            padding: 3px;
+            width: 800px;
+            background-color: #fff;
+        }
+        .section > h1 {
+            margin: 0;
+            border-bottom: 1px solid #999;
+            padding: 0;
+            font-size: 12pt;
+            font-family: "Comic Sans MS", Helvetica, Arial, "Lucida Grande", sans-serif;
+            text-align: center;
+        }
+        .card {
+            display: inline-block;
+            vertical-align: top;
+            margin: 10px 5px;
+            padding: 10px;
+            width: 100px;
+            height: 100px;
+            color: black;
+            background: #ff8;
+            text-align: center;
+            font-family: "Comic Sans MS", Helvetica, Arial, "Lucida Grande", sans-serif;
+            box-shadow: 2px 2px 2px #eee;
+        }
+        .comic {
+          font-weight:900;
+          font-family: "Comic Sans MS", Helvetica, Arial, "Lucida Grande", sans-serif;
+          color:#fff;
+          text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
+      }
+      #form{
+        display:inline-block;
+        padding-top: 2px;
+}
+      form{
+        margin: 2px;
+      }
+    </style>
+</head>
+<body>
+
+
+
+    <h1 align="center" class="comic">KANBAN DOGE BOARD</h1>
+
+<div id="board">
+    <form action="/logout" method="GET">
+    <input align="center" style="display: inline;" type="submit" value="Go to Logout" />
+    </form>
+</div>
+
+    {% if error %}
+      <p align="center">{{error}}</p>
+    {% endif %}
+
+    <div id="board">
+        <div id="todo" class="section">
+            <h1>SUCH TO DO</h1>
+            <form action="/addTodoTask" method="POST">
+                <input type="text" name="todoitem">
+                <input type="submit" value="Add item">
+            </form>
+
+            <form action="/todo" method="POST">
+
+                    <input style="display: inline;" type="submit" name="button" value="Delete task">
+                    <input style="display: inline;" type="submit" name="button" value="Move task to next stage">
+
+                  {% for todo in todoall %}
+                  <div class="card">{{ todo.text }} <input type="checkbox" name="todotask" value="{{todo.id}}"></div>
+                  {% endfor %}
+
+            </form>
+        </div>
+
+
+
+        <div id="doing" class="section">
+            <h1>VERY DOING</h1>
+
+
+            <form action="/addDoingTask" method="POST">
+                <input type="text" name="todoitem">
+                <input type="submit" value="Add item">
+            </form>
+
+            <form action="/todo" method="POST">
+
+                    <input style="display: inline;" type="submit" name="button" value="Delete task">
+                    <input style="display: inline;" type="submit" name="button" value="Move task to next stage">
+
+                  {% for todo in doingall %}
+                  <div class="card">{{ todo.text }} <input type="checkbox" name="todotask" value="{{todo.id}}"></div>
+                  {% endfor %}
+
+            </form>
+        </div>
+
+
+        <div id="done" class="section">
+            <h1>MANY DONE</h1>
+            <form action="/addDoneTask" method="POST">
+                <input type="text" name="todoitem">
+                <input type="submit" value="Add item">
+            </form>
+
+
+              <form action="/todo" method="POST">
+
+                      <input style="display: inline;" type="submit" name="button" value="Delete task">
+
+                    {% for todo in doneall %}
+                    <div class="card">{{ todo.text }} <input type="checkbox" name="todotask" value="{{todo.id}}"></div>
+                    {% endfor %}
+
+              </form>
+        </div>
+    </div>
+
+</body>
+</html>

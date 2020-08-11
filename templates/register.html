@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Kanban Board</title>
+    <style>
+
+        body {
+               background-image: url("/static/doge.jpg");
+               background-color: #cccccc;
+        }
+        #form {
+            display: table;
+            margin: auto;
+            width: 30%;
+            border: 3px solid yellow;
+            padding: 10px;
+            background-color: #fff;
+
+        }
+        .comic {
+          font-weight:900;
+          font-family: "Comic Sans MS", Helvetica, Arial, "Lucida Grande", sans-serif;
+          color:#fff;
+          text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
+      }
+
+    </style>
+
+</head>
+<body>
+
+<h1 align="center" class="comic">KANBAN DOGE BOARD</h1>
+
+  <div id="form">
+  		<h4 class="comic">Register</h4>
+  		<form align="center" method="POST" action="/register">
+  			<dl>
+          <dt>Insert Username</dt>
+  				<dd>{{form.username}}</dd>
+          <br>
+          <dt>Insert Password</dt>
+  				<dd>{{form.password}}</dd>
+  			</dl>
+  			<p><input type=submit value=Register></p>
+  		</form>
+
+      {% if error %}
+        <p align="center"><strong>Error:</strong>{{error}}</p>
+      {% endif %}
+
+
+
+  	</div>
+
+</body>
+</html>
